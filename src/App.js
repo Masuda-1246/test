@@ -1,3 +1,4 @@
+import React from 'react';
 import Home from './components/Home';
 import SignUp from './components/SingUp';
 import Login from './components/Login';
