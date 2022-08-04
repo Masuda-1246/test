@@ -27,8 +27,11 @@ const SignUp = () => {
     try {
       await createUserWithEmailAndPassword(auth ,email.value, password.value);
       await setDoc(userDocumentRef, {
+        id:userDocumentRef.id,
         name: name.value,
         email: email.value,
+        from: "",
+        favorite_food:""
       });
       navigate('/')
     } catch (error) {
