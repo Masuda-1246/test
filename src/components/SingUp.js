@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { auth } from '../firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
 import { Link, useNavigate} from 'react-router-dom'
 import { db } from '../firebase'
 import {collection, getDocs, setDoc, doc} from 'firebase/firestore'
@@ -26,6 +26,7 @@ const SignUp = () => {
     const { name, email, password } = event.target.elements;
     try {
       await createUserWithEmailAndPassword(auth ,email.value, password.value);
+      await sendEmailVerification(auth.currentUser)
       await setDoc(userDocumentRef, {
         id:userDocumentRef.id,
         name: name.value,
@@ -33,6 +34,7 @@ const SignUp = () => {
         from: "",
         favorite_food:""
       });
+
       navigate('/')
     } catch (error) {
       setError(error.message)

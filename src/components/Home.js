@@ -9,6 +9,8 @@ const Home = () => {
   const navigate = useNavigate();
   const { user } = useAuthContext();
   const [users, setUsers] = useState([]);
+  const [from, setFrom] = useState('');
+  const [favorite_food, setFavorite] = useState('');
   const [uid, setUid] = useState([]);
   useEffect(() => {
     if(user){
@@ -18,12 +20,19 @@ const Home = () => {
         snapshot.forEach(doc => {
           console.log(doc.data());
           setUsers(doc.data().name)
+          setFavorite(doc.data().favorite_food)
+          setFrom(doc.data().from)
           setUid(doc.id)
         })
       })
     } 
-  })
-  
+  },[])
+  const handleChangeFrom = (event) => {
+    setFrom(event.currentTarget.value);
+  };
+  const handleChangeFavorite = (event) => {
+    setFavorite(event.currentTarget.value);
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     const {from, favorite_food} = event.target.elements;
@@ -48,15 +57,15 @@ const Home = () => {
        
       
         <div>
-          <h1>ログイン</h1>
+          <h2>ユーザー情報</h2>
           <form onSubmit={handleSubmit}>
             <div>
               <label>出身地</label>
-              <input name="from" type="from" placeholder="東京" />
+              <input name="from" type="text" value={from} onChange={(event) => handleChangeFrom(event)}/>
             </div>
             <div>
               <label>好きな食べ物</label>
-              <input name="favorite_food" type="favorite_food" placeholder="ラーメン" />
+              <input name="favorite_food" type="text" value={favorite_food}  onChange={(event) => handleChangeFavorite(event)}/>
             </div>
             <div>
               <button>保存</button>
