@@ -1,9 +1,10 @@
 import React from 'react';
-import Home from './components/Home';
-import SignUp from './components/SingUp';
-import Login from './components/Login';
+import Home from './pages/Home';
+import SignUp from './pages/SingUp';
+import Login from './pages/Login';
 import { AuthProvider } from './context/AuthContext';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import SelfAsDoshishaStudentStartingYear from './pages/SelfAsDoshishaStudentStartingYear'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/SelfAsDoshishaStudentStartingYear" element={<SelfAsDoshishaStudentStartingYear />} />
           </Routes>
         </BrowserRouter>
       </div>
