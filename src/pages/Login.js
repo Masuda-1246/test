@@ -5,6 +5,7 @@ import { auth } from '../firebase';
 import React from 'react';
 const Login = () => {
   const navigate = useNavigate();
+  const userAgent = navigator.userAgent;
   const [error, setError] = useState('');
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,6 +22,7 @@ const Login = () => {
   return (
     <div>
       <h1>ログイン</h1>
+      <h3>userAgent: {userAgent}</h3>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div>

@@ -7,7 +7,11 @@ import {collection, query, where, getDocs} from 'firebase/firestore'
 import ButtonComponents from '../components/ButtonComponents'
 
 const lists = [
-  {title:"同志社人同志社国際生としての力",name:"go",link:"SelfAsDoshishaStudentStartingYear"}
+  {title:"同志社人同志社国際生としての力",name:"go",link:"SelfAsDoshishaStudent"},
+  {title:"自己理解・自己管理能力",name:"go",link:"SelfManagement"},
+  {title:"課題対応能力",name:"go",link:"Responsiveness"},
+  {title:"キャリアプランニング能力",name:"go",link:"Plannning"},
+  {title:"人間関係形成・社会形成能力",name:"go",link:"Communication"},
 ]
 
 const Home = () => {
