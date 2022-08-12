@@ -44,7 +44,9 @@ const Home = () => {
     return (
       <div>
         
-        <h1>ホーム</h1>
+
+       
+
         <h2>ようこそ {userData.name} さん</h2>
           <div>
             {
